@@ -8,7 +8,7 @@ module.exports = (app) => {
     // app.set('views', __dirname + '../views');
     
     app.engine('.hbs', handlebars({
-        defaultLayout:  'index',
+        defaultLayout:  'main',
         extname: '.hbs'
     }));
     app.set('view engine', '.hbs');
