@@ -1,3 +1,5 @@
-const cube = require('./cube');
+const cubeController = require('./cube');
+const homeController = require('./home');
+const detailsController = require('./details');
 
-module.exports = [cube];
+module.exports = [cubeController, detailsController, homeController];
