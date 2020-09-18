@@ -1,46 +1,53 @@
-// TODO: Require Controllers...
+// ==============================================================================
+//* DEPENDENCIES *
+// ==============================================================================
 let path = require('path');
-let cubeData = require('./database.json');
-let controllers = require('../controllers/index');
-const url = require('url');
+let homeController = require('../controllers/home.js');
+let detailsController = require('../controllers/details.js');
+let createControllerRoute = require('../controllers/create.js').route;
+let createControllerData = require('../controllers/create.js').data;
+let aboutController = require('../controllers/about.js');
 
-// require('./config/routes')(app);
-
+// ==============================================================================
+//* ALL ROUTING & EXPORT MODULE *
+// ==============================================================================
 module.exports = (app) => {
+    // ==========================================================================
     //************ Home Route ************\\
+    // ==========================================================================
     app.get('/', (req, res) => {
-        res.status(200);
-        res.render('index', {
-            layout: 'main',
-            cubeData: cubeData
-        });
+        homeController(req, res);
     });
 
+    // ==========================================================================
     //************ About Route ************\\
+    // ==========================================================================
     app.get('/about', (req, res) => {
-        res.status(200);
-        res.render('about', {layout: 'main'});
+        aboutController(req, res);
     });
-
-    //************ Create Route ************\\
+    
+    // ==========================================================================
+    //************ Create Routes ************\\
+    // ==========================================================================
     app.get('/create', (req, res) => {
-        res.status(200);
-        res.render('create', {layout: 'main'});
+        createControllerRoute(req, res);
     });
 
-    //************ Details Route ************\\
-    app.get('/details/:id', (req, res) => {
-        const pathname = url.parse(req.url).pathname;
-        id = pathname.split('/').pop().split(':').pop() -1;
-        // console.log(id);
-        res.status(200);
-        res.render('details', {
-            layout: 'main',
-            controllers: controllers,
-            cubeData: cubeData[id]
-        });
+    app.post('/create', (req, res) => {
+        createControllerData(req, res);
     });
+
+    // ==========================================================================
+    //************ Details Route ************\\
+    // ==========================================================================
+    app.get('/details/:id', (req, res) => {
+        
+        detailsController(req, res);
+    });
+    
+    // ==========================================================================
     //************ Not Found Route ************\\
+    // ==========================================================================
     // If no matching route is found default to 404 page
     app.get("*", function (req, res) {
         res.status(404);

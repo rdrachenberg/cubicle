@@ -1,21 +1,29 @@
-
-const url = require('url');
-const fs = require('fs');
-const path = require('path');
-
-const cubeData = require('../config/database.json');
-
+// ==========================================================================
+//*********** Require dependancies ***********//
+// ==========================================================================
+// const cubeData = require('../config/database.json');
+const Cube = require('../models/Cube');
 
 module.exports = (req, res) => {
-    const pathname = url.parse(req.url).pathname;
-    let id = pathname.split('/:').pop();
+    
+    let id = req.params.id;
     console.log(id);
-    if (pathname.includes('/details/') && req.method == 'GET') {
-        // return cubeData[id];
-    }
-    // cubeData = cubeData;
+    // let cubeIndex = cubeData.findIndex(cube => cube.id == id);
+    let cube = Cube.findById(id).lean().then(cube =>{
+        console.log(cube);
+        res.status(200);
+        res.render('details', {
+            layout: 'main',
+            cube: cube
+        });
+    });
+
+    // Cube.find({}).lean().then(cube => {
+    //     console.log(cube);
+    //     res.status(200);
+    //     res.render('details', {
+    //         layout: 'main',
+    //         cube: cube
+    //     });
+    // });
 };
-
-
-// const pathname = url.parse(req.url).pathname;
-// id = pathname.split('/').pop().split(':').pop() - 1;
