@@ -4,8 +4,13 @@
 let path = require('path');
 let homeController = require('../controllers/home.js');
 let detailsController = require('../controllers/details.js');
+
 let createControllerRoute = require('../controllers/create.js').route;
 let createControllerData = require('../controllers/create.js').data;
+
+let createAccessoryRoute = require('../controllers/accessory').route;
+let createAccessoryData = require('../controllers/accessory').data;
+
 let aboutController = require('../controllers/about.js');
 
 // ==============================================================================
@@ -45,6 +50,16 @@ module.exports = (app) => {
         detailsController(req, res);
     });
     
+    // ==========================================================================
+    //************ Accessory Route ************\\
+    // ==========================================================================
+    app.get('/create/accessory', (req, res) => {
+        createAccessoryRoute(req, res);
+    });
+    app.post('/create/accessory', (req, res) => {
+        createAccessoryData(req, res);
+    });
+
     // ==========================================================================
     //************ Not Found Route ************\\
     // ==========================================================================
