@@ -7,7 +7,7 @@
 }, {
     "id": "2",
     "name": "ECO-DARK",
-    "description": " Magnets in AirSM will not drop, and their positions will be more precise with the Magnets-Snap-On design. With the use of 3mm*2mm magnets, the handfeel will be more stable and more comfortable. P.S. This design is brand new for the AirSM.",
+    "description": "Magnets in AirSM will not drop, and their positions will be more precise with the Magnets-Snap-On design. With the use of 3mm*2mm magnets, the handfeel will be more stable and more comfortable. P.S. This design is brand new for the AirSM.",
     "imageUrl": "https://thingsidesire.com/wp-content/uploads/2018/06/Eco-Dark-Rubik%E2%80%99s-Cube2.jpg",
     "difficultyLevel": 6
 }, {
@@ -23,4 +23,16 @@
     "description": "Magnets in AirSM will not drop, and their positions will be more precise with the Magnets-Snap-On design. With the use of 3mm*2mm magnets, the handfeel will be more stable and more comfortable. P.S. This design is brand new for the AirSM.",
     "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg",
     "difficultyLevel": 3
+}, {
+    "name": "Panda who",
+    "description": "Panda Bear!!",
+    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61J8UP8pySL._SX425_.jpg"
+}, {
+    "name": "Best Panda",
+    "description": "Panda Bear!!",
+    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61J8UP8pySL._SX425_.jpg"
+}, {
+    "name": "Panda what?",
+    "description": "Panda Bear!!",
+    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61J8UP8pySL._SX425_.jpg"
 }]

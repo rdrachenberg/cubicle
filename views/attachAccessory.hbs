@@ -3,18 +3,18 @@
     <div class="form">
         <h2>Rubiks Cube</h2>
         <img class="cube" src="{{cube.imageUrl}}">
-        {{#if accessories}}
-            <form action='/create/accessory/{{id}}' method="POST">
+        {{#if accessoriesLength}}
+            <form action='/create/accessory/{{cube._id}}' method="POST">
             <label for="accessory">Accessories</label>
-            <select id="accessory" name="name">    
+            <select id="accessory" name="accessory">    
                 {{#each accessories}}
-                <option value="{{name}}">{{name}}</option>
+                <option value="{{_id}}">{{name}}</option>
                 {{/each}}
             </select>
             <input type="submit" value="Attach">
             </form>
         {{else}}
-        <h3 class="italic">This cube has all available accessories so far or there is no available at all...</h3>
+        <h3 class="italic">This cube has all available accessories so far or there are none available at all...</h3>
         <a class="btn" href="/">Back</a>
         {{/if}}
     </div>

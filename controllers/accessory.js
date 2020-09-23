@@ -15,19 +15,19 @@ module.exports = {
         let formData = req.body;
         // console.log(formData);
 
-        if (formData.name == undefined || formData.name == null) {
-            console.log('No name was submitted!');
-            return;
+        // if (formData.name == undefined || formData.name == null) {
+        //     console.log('No name was submitted!');
+        //     return;
 
-        } else if (formData.description == undefined || formData.description == null || formData.description.length >= 400) {
-            console.log('No description or description was too long!');
-            return;
+        // } else if (formData.description == undefined || formData.description == null || formData.description.length >= 400) {
+        //     console.log('No description or description was too long!');
+        //     return;
 
-        } else if (formData.imageUrl == undefined || formData.imageUrl == null || validURL(formData.imageUrl)) {
-            console.log('Not an image or invalid image url location!');
-            return;
+        // } else if (formData.imageUrl == undefined || formData.imageUrl == null || validURL(formData.imageUrl)) {
+        //     console.log('Not an image or invalid image url location!');
+        //     return;
 
-        } else {
+        // } else {
             new Accessory(formData)
                 .save().then((accessory) => {
                     console.log(accessory);
@@ -39,7 +39,7 @@ module.exports = {
                     }
                 });
         }
-    }
+    
 };
 
 //*************** Function to validate our incoming form img url string ***************//

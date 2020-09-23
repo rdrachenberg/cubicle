@@ -14,7 +14,23 @@ let createAccessoryData = require('../controllers/accessory').data;
 let attachAccessoryRoute = require('../controllers/attach').route;
 let attachAccessoryData = require('../controllers/attach').data;
 
+let userRoute = require('../controllers/user').route;
+let userData = require('../controllers/user').data;
+
+let loginRoute = require('../controllers/login').route;
+let loginData = require('../controllers/login').data;
+
+let editRoute = require('../controllers/edit').route;
+let editData = require('../controllers/edit').data;
+
 let aboutController = require('../controllers/about.js');
+const {check, validationResult} = require('express-validator');
+
+const cookieParser = require ('cookie-parser');
+const jwt = require('jsonwebtoken');
+
+const loggedIn = require('./config').loggedIn;
+
 
 
 // ==============================================================================
@@ -69,8 +85,44 @@ module.exports = (app) => {
         createAccessoryData(req, res);
     });
 
-    
+// ==============================================================================
+//************ User Routes ************\\
+// ==============================================================================    
+app.get('/register', (req, res) => {
+    userRoute(req, res);
+});
+app.post('/register', async (req, res) => {
+    userData(req, res);
+});
 
+// ==============================================================================
+//************ Login Routes ************\\
+// ============================================================================== 
+app.get('/login', (req, res) => {
+    loginRoute(req, res);
+});
+app.post('/login', (req, res) => {
+    loginData(req, res);
+});
+
+// ==============================================================================
+//************ Edit Routes ************\\
+// ============================================================================== 
+app.get('/edit', (req, res) => {
+    editRoute(req, res);
+});
+app.post('/edit', (req, res) => {
+    editData(req, res);
+});
+// ==============================================================================
+//************ Delete Routes ************\\
+// ============================================================================== 
+app.get('/delete', (req, res) => {
+    editRoute(req, res);
+});
+app.post('/edit', (req, res) => {
+    editData(req, res);
+});
 
 
 // ==============================================================================
@@ -82,3 +134,4 @@ module.exports = (app) => {
         res.render(path.join(__dirname, "../views/404.hbs"));
     });
 };
+

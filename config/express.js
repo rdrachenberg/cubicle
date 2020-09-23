@@ -6,6 +6,8 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 module.exports = (app) => {
 // ================================================================================    
@@ -35,6 +37,11 @@ module.exports = (app) => {
 
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
+
+// ================================================================================
+//************** Setup cookie parser **************//
+// ================================================================================
+    app.use(cookieParser());
 
 // ================================================================================
 //************** Setup the static files **************//
