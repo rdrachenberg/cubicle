@@ -15,27 +15,18 @@ module.exports ={
         });
     },
     data: (req, res) => {
-        // let formData = req.body;
-        // console.log(formData);
-        if(res.status != 'ok'){
-            console.log(res.status);
-        }
-
         let user = req.body;
-        // let name = req.body.username;
-        // let password = req.body.password;
-        // console.log(user);
-        // console.log(name);
-        // console.log(password);
         
-        new User(user).save().then((newUser) => {
-            res.json(newUser);
-            console.log(newUser);
-        }).catch(err => {
-            console.log(err);
-        });
+        new User(user).save()
+            .then((newUser) => {
+                console.log(newUser);
+                
+            }).then(login => {
+                // console.log(login);
+            }).catch(err => {
+                console.log(err);
+            });
 
-        
         res.redirect('/');
 
     }
