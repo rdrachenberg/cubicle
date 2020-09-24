@@ -18,16 +18,23 @@ module.exports ={
         let user = req.body;
         
         new User(user).save()
-            .then((newUser) => {
+            .then(function(newUser){
                 console.log(newUser);
-                
-            }).then(login => {
-                // console.log(login);
+                bcrypt.compare(req.body.password, newUser.password, function(err, result){
+                    console.log(result);
+                    if(result){
+                        loggedIn = true;
+                        console.log(loggedIn + ' <<<< is loggedIn?');
+                        res.redirect('/');
+                    } else{
+                        console.log(result + ' <<<< is error result?');
+                    }
+                });
             }).catch(err => {
                 console.log(err);
             });
 
-        res.redirect('/');
+        // res.redirect('/register');
 
     }
     

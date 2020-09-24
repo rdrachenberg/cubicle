@@ -39,6 +39,9 @@ userSchema.pre('save', function(next) {
             }
         });
     });
+    
+    
+    
 });
 
 userSchema.methods.comparePassword = 
@@ -46,7 +49,8 @@ userSchema.methods.comparePassword =
         bcrypt.compare(candiatePassword, this.password, function(err, isMatch) {
             if(err) return cb(err);
                 console.log(isMatch);
-                return cb(null, isMatch);
+                
+                cb(null, isMatch)();
                 
         });
     };
